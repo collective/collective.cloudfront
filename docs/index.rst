@@ -1,0 +1,5 @@
+====================
+collective.cloudfront
+====================
+
+User documentation
