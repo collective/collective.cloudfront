@@ -3,27 +3,39 @@ from time import time
 
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
+from collective.cloudfront import prefix
 
 import boto3
 
 
-# TODO fix firing of Purge and submit pull request
-# TODO create control panel for AWS credentials and distribution ID
-
 logger = logging.getLogger('sixfeetup.cloudfrontpurging')
+
+
+def get_cloudfront_settings():
+    registry = getUtility(IRegistry)
+    setting_keys = (
+        'distribution_id',
+        'aws_access_key_id',
+        'aws_secret_access_key',
+    )
+    return {sk: registry['{}.{}'.format(prefix, sk)] for sk in setting_keys}
+
 
 def purge_cache(content_obj, event):
     url = content_obj.absolute_url_path()
-    registry = getUtility(IRegistry)
-    distribution_id = registry['sixfeetup.cloudfrontpurging.distribution_id']
-    if not distribution_id:
-        logger.error('Please provide a CloudFront Distribution ID')
+    cloudfront_prefs = get_cloudfront_settings()
+    if not all(cloudfront_prefs.values()):
+        logger.error('Please provide CloudFront settings in the Control Panel')
         return
     reference = 'plonepurge' + str(time())
-    cloudfront = boto3.client('cloudfront')
+    cloudfront = boto3.client(
+        'cloudfront',
+        aws_access_key_id=cloudfront_prefs['aws_access_key_id'],
+        aws_secret_access_key=cloudfront_prefs['aws_secret_access_key'],
+    )
     try:
         response = cloudfront.create_invalidation(
-            DistributionId=distribution_id,
+            DistributionId=cloudfront_prefs['distribution_id'],
             InvalidationBatch={
                 'Paths': {
                     'Quantity': 1,

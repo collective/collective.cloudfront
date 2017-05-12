@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <registry>
-  <record name="sixfeetup.cloudfrontpurging.distribution_id">
-    <field type="plone.registry.field.TextLine">
-      <title>CloudFront Distribution ID</title>
-      <description>The ID for an AWS CloudFront distribution</description>
-    </field>
-  </record>
+  <records interface="collective.cloudfront.browser.interfaces.ICloudFrontConfiguration"
+           prefix="collective.cloudfront.browser.interfaces.ICloudFrontConfiguration">
+  </records>
 </registry>

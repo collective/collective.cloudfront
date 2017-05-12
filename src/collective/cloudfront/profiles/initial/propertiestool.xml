@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+  <object name="cloudfront_properties" meta_type="Plone Property Sheet">
+    <property name="title">CloudFront properties</property>     
+    <property name="distribution_id"></property>
+    <property name="aws_access_key_id"></property>
+    <property name="aws_secret_access_key"></property>
+  </object>
+</object>
