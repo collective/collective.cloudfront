@@ -8,7 +8,7 @@ from collective.cloudfront import prefix
 import boto3
 
 
-logger = logging.getLogger('sixfeetup.cloudfrontpurging')
+logger = logging.getLogger('collective.cloudfront')
 
 
 def get_cloudfront_settings():
