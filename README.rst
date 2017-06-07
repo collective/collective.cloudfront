@@ -6,33 +6,23 @@
 collective.cloudfront
 ==============================================================================
 
-Tell me what your product does
+AWS CloudFront support for plone.app.caching
+
+This add-on watches for Purge notifications from ``plone.app.caching`` and sends the corresponding invalidation requests to an instance of Amazon’s CloudFront.
+
 
 Features
 --------
 
-- Can be bullet points
-
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+- Configurable in Site Setup (@@cloudfront-controlpanel)
 
 
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+You will need to create an access key in your AWS Console.
 
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
+Once you have the key’s ID and secret, you can provide them to your Plone site via Site Setup under “CloudFront Configuration”. You will also need to provide the ID for your CloudFront distribution.
 
 
 Installation
@@ -56,14 +46,6 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.cloudfront/issues
 - Source Code: https://github.com/collective/collective.cloudfront
-- Documentation: https://docs.plone.org/foo/bar
-
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
 
 
 License
