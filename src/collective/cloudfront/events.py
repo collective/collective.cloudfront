@@ -45,7 +45,6 @@ def purge_cache(content_obj, event):
             }
         )
         i_id = response['Invalidation']['Id']
-        i_url = response['Location']
-        logger.info('Invalidated %s with ID %s', i_url, i_id)
+        logger.info('Invalidated %s with ID %s', url, i_id)
     except Exception as e:
         logger.warn('Invalidation request failed for %s: %s', url, e.message)
