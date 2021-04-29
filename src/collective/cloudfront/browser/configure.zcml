@@ -17,4 +17,10 @@
      class=".controlpanel.CloudFrontControlPanel"
      permission="cmf.ManagePortal"
      />
+
+  <browser:page
+      name="purge-cloudfront"
+      for="*"
+      class=".controlpanel.PurgeCache"
+      permission="cmf.ManagePortal" />
 </configure>

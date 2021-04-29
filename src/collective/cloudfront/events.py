@@ -25,8 +25,9 @@ def purge_cache(content_obj, event):
     url = content_obj.absolute_url_path()
     cloudfront_prefs = get_cloudfront_settings()
     if not all(cloudfront_prefs.values()):
-        logger.error('Please provide CloudFront settings in the Control Panel')
-        return
+        msg = 'Please provide CloudFront settings in the Control Panel'
+        logger.error(msg)
+        return msg
     reference = 'plonepurge' + str(time())
     cloudfront = boto3.client(
         'cloudfront',
@@ -45,6 +46,10 @@ def purge_cache(content_obj, event):
             }
         )
         i_id = response['Invalidation']['Id']
-        logger.info('Invalidated %s with ID %s', url, i_id)
+        msg = 'Invalidated {0} with ID {1}'.format(url, i_id)
+        logger.info(msg)
+        return msg
     except Exception as e:
-        logger.warn('Invalidation request failed for %s: %s', url, e.message)
+        msg = 'Invalidation request failed for {0}: {1}'.format(url, e.message)
+        logger.warn(msg)
+        return msg
