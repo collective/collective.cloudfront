@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1 (2021-04-29)
+1.2 (2021-05-14)
 ---------------
 
 - add button for invalidating cache
