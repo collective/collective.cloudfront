@@ -23,6 +23,8 @@ def get_cloudfront_settings():
 
 def purge_cache(content_obj, event):
     url = content_obj.absolute_url_path()
+    if url == '/':
+        url = '/*'
     cloudfront_prefs = get_cloudfront_settings()
     if not all(cloudfront_prefs.values()):
         msg = 'Please provide CloudFront settings in the Control Panel'
