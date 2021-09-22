@@ -51,7 +51,7 @@ def purge_cache(content_obj, event):
         msg = 'Invalidated {0} with ID {1}'.format(url, i_id)
         logger.info(msg)
         return msg
-    except Exception as e:
-        msg = 'Invalidation request failed for {0}: {1}'.format(url, e.message)
+    except Exception as exc:
+        msg = 'Invalidation request failed for {0}: {1}'.format(url, str(exc))
         logger.warn(msg)
         return msg
