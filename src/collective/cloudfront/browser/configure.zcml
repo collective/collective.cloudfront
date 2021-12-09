@@ -15,12 +15,12 @@
      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
      name="cloudfront-controlpanel"
      class=".controlpanel.CloudFrontControlPanel"
-     permission="cmf.ManagePortal"
+     permission="cloudfront.managePurging"
      />
 
   <browser:page
       name="purge-cloudfront"
       for="*"
       class=".controlpanel.PurgeCache"
-      permission="cmf.ManagePortal" />
+      permission="cloudfront.managePurging" />
 </configure>
