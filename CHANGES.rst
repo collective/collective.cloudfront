@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.3 (unreleased)
+----------------
+
+- only run purging if add-on is installed
+- check if purging is enabled in plone.app.caching 
+  [abl123]
+
+
 1.2 (2021-05-14)
 ----------------
 
