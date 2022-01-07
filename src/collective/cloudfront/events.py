@@ -1,9 +1,12 @@
 import logging
 from time import time
 
+from plone.cachepurging.interfaces import ICachePurgingSettings
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
+from zope.globalrequest import getRequest
 from collective.cloudfront import prefix
+from .interfaces import ICollectiveCloudfrontLayer
 
 import boto3
 
@@ -22,6 +25,21 @@ def get_cloudfront_settings():
 
 
 def purge_cache(content_obj, event):
+    request = getRequest()
+    if request is None:
+        return
+
+    if not ICollectiveCloudfrontLayer.providedBy(request):
+        return
+
+    registry = getUtility(IRegistry)
+    if registry is None:
+        return
+
+    settings = registry.forInterface(ICachePurgingSettings, check=False)
+    if not settings.enabled:
+        return
+
     url = content_obj.absolute_url_path()
     if url == '/':
         url = '/*'
