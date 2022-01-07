@@ -9,6 +9,6 @@
     category="Products" condition_expr=""
     url_expr="string:${portal_url}/@@cloudfront-controlpanel" visible="True"
     i18n:attributes="title">
-  <permission>Manage portal</permission>
+  <permission>collective.cloudfront: Manage purging</permission>
  </configlet>
 </object>

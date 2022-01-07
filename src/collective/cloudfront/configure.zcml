@@ -2,12 +2,18 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.cloudfront">
 
   <i18n:registerTranslations directory="locales" />
 
   <includeDependencies package="." />
 
+
+  <permission
+    id="cloudfront.managePurging"
+    title="collective.cloudfront: Manage purging"
+    />
   <include package=".browser" />
 
 
@@ -15,9 +21,18 @@
       name="default"
       title="CloudFront Purging"
       directory="profiles/default"
-      description="Installs the collective.cloudfront add-on."
+      description="Default profile for collective.cloudfront"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
+      />
+
+
+  <genericsetup:registerProfile
+      name="initial"
+      title="CloudFront Purging Initial"
+      directory="profiles/initial"
+      description="Initial profile for collective.cloudfront"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <genericsetup:registerProfile
@@ -38,5 +53,15 @@
       for="Products.CMFCore.interfaces.IContentish
            z3c.caching.interfaces.IPurgeEvent"
       handler=".events.purge_cache"
+      />
+
+    <genericsetup:upgradeStep
+      title="Reinstall default profile"
+      description="Sets rolemap"
+      source="1000"
+      destination="1001"
+      sortkey="1"
+      handler=".upgrades.upgrade_rolemap"
+      profile="collective.cloudfront:default"
       />
 </configure>
