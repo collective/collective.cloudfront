@@ -7,9 +7,6 @@
 
   <i18n:registerTranslations directory="locales" />
 
-  <includeDependencies package="." />
-
-
   <permission
     id="cloudfront.managePurging"
     title="collective.cloudfront: Manage purging"
