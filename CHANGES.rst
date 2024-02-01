@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.4 (unreleased)
+----------------
+
+- Back to development [rber474]
+
+
 1.3 (2022-01-07)
 ----------------
 
