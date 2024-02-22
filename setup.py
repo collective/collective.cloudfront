@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='collective.cloudfront',
-    version='1.3',
+    version='1.4.dev0',
     description="AWS CloudFront support for plone.app.caching",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
