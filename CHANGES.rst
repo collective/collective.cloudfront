@@ -4,6 +4,8 @@ Changelog
 1.4 (unreleased)
 ----------------
 
+- Drop python2 and Plone < 5.2 compatibility [erral]
+
 - Fixes issue #2: remove includeDependecies [rber474]
 
 
