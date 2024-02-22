@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4 (unreleased)
+2.0 (2024-02-22)
 ----------------
 
 - Drop python2 and Plone < 5.2 compatibility [erral]
